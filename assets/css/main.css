@@ -1,0 +1,74 @@
+:root {
+    --max-width: 1200px;
+    --black: #000;
+    --white: #FFF;
+    --white2: #f0f0f0;
+    --gray1: #242424;
+    --yellow: #ffdd00;
+    --red: #ff0000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 5rem;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    display: grid;
+    grid-template-areas: 
+    'one'
+    'two'
+    'three'
+    'four'
+    'five';
+}
+
+.one{
+    grid-area: one;
+    background: var(--black);
+}
+.two{
+    grid-area: two;
+    background: var(--gray1);
+}
+.three{
+    grid-area: three;
+    background: var(--white);
+}
+.four{
+    grid-area: four;
+    background: var(--white2);
+}
+.five{
+    grid-area: five;
+    background: var(--yellow);
+}
+
+@media (min-width: 30em){
+    .container {
+        grid-template-areas: 
+        'one one'
+        'two five'
+        'three five'
+        'four four';
+    }
+}
+
+@media (min-width: 50em){
+    .container {
+        grid-template-areas: 
+        'one one two five'
+        'three four four five';
+    }
+}
+
+.one, .two, .three, .four, .five {
+    border: 1px solid var(--red);
+    padding: 5rem;
+    border-radius: 10px;
+}
