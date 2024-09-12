@@ -5,7 +5,9 @@
     --white2: #f0f0f0;
     --gray1: #242424;
     --yellow: #ffdd00;
+    --yellow2: #f3ffb5;
     --red: #ff0000;
+    --green: #1dad22;
 }
 
 * {
@@ -13,62 +15,67 @@
 }
 
 .container {
-    padding: 5rem;
-    width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    display: grid;
-    gap: 1.5rem;
-    display: grid;
-    grid-template-areas: 
-    'one'
-    'two'
-    'three'
-    'four'
-    'five';
 }
 
-.one{
-    grid-area: one;
-    background: var(--black);
+section#crud-table table{
+    margin: 2rem;
+    padding: 1rem;
+    width: 100%;
+    border-spacing: 5px;
 }
-.two{
-    grid-area: two;
+
+section#crud-table table thead th {
+    border-radius: 5px;
     background: var(--gray1);
+    color: var(--white);
+    padding: 0.5rem;
+    transition: background-color ease-in-out 0.3s;
 }
-.three{
-    grid-area: three;
-    background: var(--white);
+
+section#crud-table table thead th h4 {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    display: inline;
 }
-.four{
-    grid-area: four;
+
+section#crud-table table tbody tr:nth-child(odd) {
     background: var(--white2);
 }
-.five{
-    grid-area: five;
-    background: var(--yellow);
+
+section#crud-table table tbody tr td {
+    padding: 0.5rem;
+    text-align: center;
+    transition: background-color ease-in-out 0.3s;
 }
 
-@media (min-width: 30em){
-    .container {
-        grid-template-areas: 
-        'one one'
-        'two five'
-        'three five'
-        'four four';
-    }
+section#crud-table table tbody tr:hover td{
+    background-color: var(--yellow2);
 }
 
-@media (min-width: 50em){
-    .container {
-        grid-template-areas: 
-        'one one two five'
-        'three four four five';
-    }
+section#crud-table table tbody tr td:first-child {
+    border-radius: 5px 0 0 5px;
 }
 
-.one, .two, .three, .four, .five {
-    border: 1px solid var(--red);
-    padding: 5rem;
-    border-radius: 10px;
+section#crud-table table tbody tr td:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+section#crud-table table tbody tr td button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    transition: color ease-in-out 0.3s;
+}
+
+section#crud-table table tbody tr td button.crud-table-edit:hover {
+    color: var(--green);
+}
+
+section#crud-table table tbody tr td button.crud-table-delete:hover {
+    color: var(--red);
 }
