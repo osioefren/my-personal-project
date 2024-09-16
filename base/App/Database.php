@@ -12,8 +12,13 @@ class Database {
     private $dbname;
     private $password;
     private $errorHandler;
+    private $conn;
 
-    function __construct() {
+    public function __construct() {
+        $this->connection();
+    }
+
+    private function connection() {
         $info = $this->getInfo();
         $this->setInfo(
             $info['servername'], 
@@ -25,12 +30,14 @@ class Database {
         $this->errorHandler = new ErrorHandler();
 
         try {
-            $conn =  new PDO("mysql:host={$this->servername}", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn =  new PDO("mysql:host={$this->servername}", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $sql = "CREATE DATABASE IF NOT EXISTS {$this->dbname}";
-            $conn->exec($sql);
+            $this->conn->exec($sql);
             echo "Database connection successful";
+
+            $this->conn->exec("USE {$this->dbname}");
 
         } catch (PDOException $e) {
             $this->errorHandler->customErrorHandler(
@@ -68,22 +75,19 @@ class Database {
         $this->password = $password;
     }
 
-    function createTable() {
+    protected function createTable() {
         try {
-            $conn = new PDO("mysql:host={$this->servername};dbname={$this->dbname}", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             $sql = "CREATE TABLE IF NOT EXISTS users (
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
                 fullname VARCHAR(255) NOT NULL,
                 username VARCHAR(255) NOT NULL,
                 email VARCHAR(255) NOT NULL,
                 password VARCHAR(255) NOT NULL,
-                date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-                date_updated TIMESTAMP
+                date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
             )";
 
-            $conn->exec($sql);
+            $this->conn->exec($sql);
             echo "Table 'users' created successfully";
 
         } catch (PDOException $e) {
@@ -95,11 +99,115 @@ class Database {
             );
             die("Table creation failed.");
         } finally {
-            $conn = null;
+            $this->conn = null;
+        }
+    }
+
+    protected function showData() {
+        try {
+            $stmt = $this->conn->prepare("SELECT id, fullname, username, email, password FROM users");
+            $stmt->execute();
+
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            print_r($stmt->fetchAll());
+
+        } catch (PDOException $e) {
+            $this->errorHandler->customErrorHandler(
+                $e->getCode(),
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine()
+            );
+            die("Theres a problem in showing the data.");
+        } finally {
+            $this->conn = null;
+        }
+    }
+
+    protected function insertDataToTable() {
+        try {
+            $stmt = $this->conn->prepare("INSERT INTO users (fullname, username, email, password) VALUES (:fullname, :username, :email, :password)");
+            $stmt->bindParam(':fullname', $fullname);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+
+            $fullname = 'test';
+            $username = 'test';
+            $email = 'test@gmail.com';
+            $password = 'test';
+            $stmt->execute();
+
+            echo "New record created successfully";
+        } catch (PDOException $e) {
+            $this->errorHandler->customErrorHandler(
+                $e->getCode(),
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine()
+            );
+            die("There was a problem inserting the data in the database.");
+        } finally {
+            $this->conn = null;
+        }
+        
+    }
+
+    protected function updateData() {
+        try {
+            $sql = "UPDATE users SET fullname = :fullname, username = :username, email = :email, password = :password WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':fullname', $fullname);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':id', $id);
+
+            $fullname = 'ADSADASDASD';
+            $username = 'Brothers';
+            $email = 'mario@brothers.com';
+            $password = 'marioB';
+            $id = 2;
+
+            $stmt->execute();
+
+            echo "Record updated successfully";
+
+        } catch (PDOException $e) {
+            $this->errorHandler->customErrorHandler(
+                $e->getCode(),
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine()
+            );
+            die("There was a problem updating the data");
+        } finally {
+            $this->conn = null;
+        }
+        
+    }
+
+    protected function deleteData() {
+        try {
+            $sql = "DELETE FROM users WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $id = 3;
+
+            $stmt->execute();
+
+            echo "Data deleted successfully";
+        } catch (PDOException $e) {
+            $this->errorHandler->customErrorHandler(
+                $e->getCode(),
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine()
+            );
+            die("There was a problem deleting the data.");
+        } finally {
+            $this->conn = null;
         }
     }
 
 }
-
-$test = new Database();
-$test->createTable();

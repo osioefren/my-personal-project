@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/popup.css">
     <!-- <link rel="stylesheet" href="./assets/css/grid.css"> -->
 </head>
 <body>
@@ -20,15 +21,21 @@
         </section> -->
 
         <section id="crud-table" class="crud-table container">
+            <div class="container table-nav">
+                <button class="primary-btn">
+                    Add user 
+                    <span><i class="fa-solid fa-user"></i></span>
+                </button>
+            </div>
             <table>
                 <thead>
                     <tr>
-                        <th><h4>ID</h4></th>
-                        <th><h4>Name</h4></th>
-                        <th><h4>Username</h4></th>
-                        <th><h4>Email</h4></th>
-                        <th><h4>Password</h4></th>
-                        <th><h4>Action</h4></th>
+                        <th><h6>ID</h6></th>
+                        <th><h6>Name</h6></th>
+                        <th><h6>Username</h6></th>
+                        <th><h6>Email</h6></th>
+                        <th><h6>Password</h6></th>
+                        <th><h6>Action</h6></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +46,7 @@
                         <td>test@mail.com</td>
                         <td>test</td>
                         <td>
-                            <form id="crud-table-form">
+                            <form class="crud-table-form">
                                 <button class="crud-table-edit">
                                     <span><i class="fa-solid fa-pen-to-square"></i></span>
                                 </button>
@@ -57,7 +64,7 @@
                         <td>test@mail.com</td>
                         <td>test</td>
                         <td>
-                            <form id="crud-table-form">
+                            <form class="crud-table-form">
                                 <button class="crud-table-edit">
                                     <span><i class="fa-solid fa-pen-to-square"></i></span>
                                 </button>
@@ -73,7 +80,13 @@
         </section>
     </main>
 
+    <?php
+        // To include the popup in the page
+        require_once './includes/popup.php'
+    ?>
+
     <script src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/popup.js"></script>
 </body>
 </html>

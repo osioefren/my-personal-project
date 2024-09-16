@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // For handling the table hover
     const crudTable = document.querySelector('.crud-table table');
 
     if (!crudTable) {
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
         }
 
-        const headerCell = crudTable.querySelector(`thead th:nth-child(${index + 1}) h4`);
+        const headerCell = crudTable.querySelector(`thead th:nth-child(${index + 1}) h6`);
         if (headerCell) {
             headerCell.style.color = color2;
         }
@@ -39,5 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     highLightTableColumn('mouseover', 'var(--yellow2)', 'var(--gray1)');
     highLightTableColumn('mouseout', '', '');
+    // End handling the table hover
 
 });

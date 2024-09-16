@@ -16,8 +16,8 @@ class ErrorHandler {
 
         $message = "Error: [$errno] $errstr - $errfile:$errline (function: $function, class: $class)";
 
-        $rootPath = dirname(__DIR__);
+        $rootPath = dirname(__DIR__, 2);
 
-        error_log($message . PHP_EOL, 3, $rootPath . "/error_log.txt");
+        error_log($message . PHP_EOL, 3, $rootPath . "/error_logs.txt");
     }
 }
