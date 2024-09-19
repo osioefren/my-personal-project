@@ -1,17 +1,17 @@
 /* For popup */
-#popup-overlay {
+#popup-overlay, #delete-overlay {
     display: none;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: var(--full-size);
+    height: var(--full-size);
     background-color: var(--overlay);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
 
-#crud-popup {
+#crud-popup,#delete-popup {
     width: calc(100% - 1rem);
     max-width: 500px;
     padding: 1rem 2rem;
@@ -23,30 +23,30 @@
     overflow: hidden;
 }
 
-#crud-popup div {
+#crud-popup div, #delete-popup div {
     margin-bottom: 1rem;
 }
 
-#crud-popup h6{
+#crud-popup h6, #delete-popup h6{
     margin: 0;
 }
 
-#crud-popup form div div {
+#crud-popup form div div, #delete-popup form div div {
    display: flex;
    justify-content: space-between;
 }
 
-#crud-popup form div div input {
+#crud-popup form div div input, #delete-popup form div div input {
     width: calc(100% - 20%);
     outline: none;
     border: none;
     border-bottom: 1px solid var(--gray1);
 }
 
-#crud-popup .close-button span i {
+#crud-popup .close-button span i, #delete-popup .close-button span i {
     transition: color ease-in-out 0.3s;
 }
 
-#crud-popup .close-button span i:hover {
-    color: red;
+#crud-popup .close-button span i:hover, #delete-popup .close-button span i:hover {
+    color: var(--red);
 }

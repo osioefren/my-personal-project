@@ -13,8 +13,11 @@
         --playfair-display: "Playfair Display";
     /*End Font-family */
 
-    /* Set max width of the container */
+    /* Set width of the container */
     --max-width: 1200px;
+    --full-size: 100%;
+    --half-size: 50%;
+    --quarter-size: 25%;
 
     /* Global color for the site */
     --black: #000;
@@ -24,6 +27,7 @@
     --yellow: #ffdd00;
     --yellow2: #f3ffb5;
     --red: #ff0000;
+    --warning: #c43131;
     --green: #1dad22;
     --blue: #0f5fff;
     --overlay: rgba(0, 0, 0, 0.4);
@@ -70,23 +74,53 @@
     justify-content: flex-end;
 }
 
+/* Utility colors */
+.primary {
+    color: var(--gray1);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Utility spacing */
+.set-in-middle {
+    display: flex;
+    justify-content: space-around;
+}
+
 /* Button */
-button.primary-btn {
+button {
     outline: none;
     border: none;
-    background: var(--gray1);
-    color: var(--white);
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0px 0px 0px var(--white2);
     transition: all ease-in-out 0.3s;
+}
+
+button.primary-btn {
+    background: var(--gray1);
+    color: var(--white);
+    box-shadow: 0px 0px 0px var(--white2);
+
 }
 
 button.primary-btn:hover{
     box-shadow: 5px 5px 5px var(--white2);
     background: var(--white);
     color: var(--gray1);
+}
+
+button.warning-btn {
+    background: var(--warning);
+    color: var(--white);
+    box-shadow: 0px 0px 0px var(--white2);
+}
+
+button.warning-btn:hover{
+    box-shadow: 5px 5px 5px var(--white2);
+    background: var(--red);
 }
 
 /* For close button */
@@ -108,7 +142,7 @@ button.primary-btn:hover{
 section#crud-table table{
     margin: 2rem;
     padding: 1rem;
-    width: 100%;
+    width: var(--full-size);
     border-spacing: 5px;
 }
 

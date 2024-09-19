@@ -37,7 +37,7 @@
                         <td>test@mail.com</td>
                         <td>test</td>
                         <td>
-                            <form class="crud-table-form">
+                            <div class="crud-table-form">
                                 <button class="crud-table-edit">
                                     <span><i class="fa-solid fa-pen-to-square"></i></span>
                                 </button>
@@ -45,7 +45,7 @@
                                 <button class="crud-table-delete">
                                     <span><i class="fa-solid fa-trash"></i></span>
                                 </button>
-                            </form>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +73,10 @@
 
     <?php
         // To include the popup in the page
-        require_once './includes/popup.php';
+        require_once './includes/popups/popup.php';
+
+        // To include delete warning in the page
+        require_once './includes/popups/deleteWarning.popup.php';
 
         // footer
         require_once './includes/layouts/footer.php';
