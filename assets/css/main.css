@@ -9,10 +9,14 @@
 
 :root {
     /* Font-family */
-    --roboto-condensed: "Roboto Condensed";
-    --playfair-display: "Playfair Display";
+        --roboto-condensed: "Roboto Condensed";
+        --playfair-display: "Playfair Display";
+    /*End Font-family */
 
+    /* Set max width of the container */
     --max-width: 1200px;
+
+    /* Global color for the site */
     --black: #000;
     --white: #FFF;
     --white2: #f0f0f0;
@@ -25,54 +29,36 @@
     --overlay: rgba(0, 0, 0, 0.4);
 
     /* Headings and text font size */
-    --h1: clamp(40px, 10vw, 70px);
-    --h2: clamp(35px, 10vw, 60px);
-    --h3: clamp(30px, 10vw, 50px);
-    --h4: clamp(25px, 10vw, 40px);
-    --h5: clamp(20px, 10vw, 30px);
-    --h6: clamp(15px, 10vw, 20px);
-    --text: clamp(12px, 10vw, 16px);
+    --h1: clamp(40px, 6vw, 70px);
+    --h2: clamp(35px, 6vw, 60px);
+    --h3: clamp(30px, 6vw, 50px);
+    --h4: clamp(25px, 6vw, 40px);
+    --h5: clamp(20px, 6vw, 30px);
+    --h6: clamp(15px, 6vw, 20px);
+    --text: clamp(12px, 6vw, 16px);
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-body {
-    font-family: var(--roboto-condensed), sans-serif;
-    font-size: var(--text);
-}
+/* Site font family and sizes */
+    body {
+        font-family: var(--roboto-condensed), sans-serif;
+        font-size: var(--text);
+    }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--playfair-display), sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-}
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--playfair-display), sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+    }
 
-h1 {
-    font-size: var(--h1);
-}
-
-h2 {
-    font-size: var(--h2);
-}
-
-h3 {
-    font-size: var(--h3);
-}
-
-h4 {
-    font-size: var(--h4);
-}
-
-h5 {
-    font-size: var(--h5);
-}
-
-h6 {
-    font-size: var(--h6);
-}
+    h1 { font-size: var(--h1); }
+    h2 { font-size: var(--h2); }
+    h3 { font-size: var(--h3); }
+    h4 { font-size: var(--h4); }
+    h5 { font-size: var(--h5); }
+    h6 { font-size: var(--h6); }
 
 .container {
     max-width: var(--max-width);
@@ -170,6 +156,10 @@ section#crud-table table tbody tr td button {
     cursor: pointer;
     background: transparent;
     transition: color ease-in-out 0.3s;
+}
+
+form.crud-table-form {
+    display: inline;
 }
 
 section#crud-table table tbody tr td button.crud-table-edit:hover {

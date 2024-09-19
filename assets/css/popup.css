@@ -42,3 +42,11 @@
     border: none;
     border-bottom: 1px solid var(--gray1);
 }
+
+#crud-popup .close-button span i {
+    transition: color ease-in-out 0.3s;
+}
+
+#crud-popup .close-button span i:hover {
+    color: red;
+}

@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/normalize.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/popup.css">
-    <!-- <link rel="stylesheet" href="./assets/css/grid.css"> -->
-</head>
-<body>
+<?php
+    require_once './includes/layouts/header.php';
+?>
     <main>
         <!-- Responsive Grid Design -->
         <!-- <section id="table" class="container">
@@ -82,11 +73,10 @@
 
     <?php
         // To include the popup in the page
-        require_once './includes/popup.php'
+        require_once './includes/popup.php';
+
+        // footer
+        require_once './includes/layouts/footer.php';
     ?>
 
-    <script src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/popup.js"></script>
-</body>
-</html>
+    

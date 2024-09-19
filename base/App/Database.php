@@ -211,3 +211,5 @@ class Database {
     }
 
 }
+
+$test = new Database();
