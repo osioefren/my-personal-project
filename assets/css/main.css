@@ -24,11 +24,13 @@
     --white: #FFF;
     --white2: #f0f0f0;
     --gray1: #242424;
+    --gray2: #c2c2c2;
     --yellow: #ffdd00;
     --yellow2: #f3ffb5;
     --red: #ff0000;
     --warning: #c43131;
-    --green: #1dad22;
+    --warning-light: #fbdfdf;
+    --success: #1dad22;
     --blue: #0f5fff;
     --overlay: rgba(0, 0, 0, 0.4);
 
@@ -43,6 +45,16 @@
 }
 
 * { box-sizing: border-box; }
+
+.container {
+    max-width: var(--max-width);
+    margin: 1rem auto;
+}
+
+.table-nav {
+    display: flex;
+    justify-content: flex-end;
+}
 
 /* Site font family and sizes */
     body {
@@ -63,76 +75,122 @@
     h4 { font-size: var(--h4); }
     h5 { font-size: var(--h5); }
     h6 { font-size: var(--h6); }
+/*End of Site font family and sizes */
 
-.container {
-    max-width: var(--max-width);
-    margin: 1rem auto;
-}
-
-.table-nav {
-    display: flex;
-    justify-content: flex-end;
+.hide {
+    display: none;
 }
 
 /* Utility colors */
-.primary {
-    color: var(--gray1);
-}
+    .primary {
+        color: var(--gray1);
+    }
 
-.warning {
-    color: var(--warning);
-}
+    .warning {
+        color: var(--warning);
+        background: var(--warning-light);
+        border-radius: 5px;
+        padding: 1rem;
+    }
+
+    .success {
+        color: var(--success);
+    }
+/*End of Utility colors */
 
 /* Utility spacing */
-.set-in-middle {
-    display: flex;
-    justify-content: space-around;
-}
+    .set-in-middle {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .set-both-ends {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .set-display-at-end {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .one-rem-apart {
+        margin-bottom: 1rem ;
+    }
+/*End of Utility spacing */
 
 /* Button */
-button {
-    outline: none;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all ease-in-out 0.3s;
-}
+    button {
+        outline: none;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all ease-in-out 0.3s;
+    }
 
-button.primary-btn {
-    background: var(--gray1);
-    color: var(--white);
-    box-shadow: 0px 0px 0px var(--white2);
+    button.primary-btn {
+        background: var(--gray1);
+        color: var(--white);
+        box-shadow: 0px 0px 0px var(--white2);
 
-}
+    }
 
-button.primary-btn:hover{
-    box-shadow: 5px 5px 5px var(--white2);
-    background: var(--white);
-    color: var(--gray1);
-}
+    button.primary-btn:hover{
+        box-shadow: 5px 5px 5px var(--white2);
+        background: var(--white);
+        color: var(--gray1);
+    }
 
-button.warning-btn {
-    background: var(--warning);
-    color: var(--white);
-    box-shadow: 0px 0px 0px var(--white2);
-}
+    button.warning-btn {
+        background: var(--warning);
+        color: var(--white);
+        box-shadow: 0px 0px 0px var(--white2);
+    }
 
-button.warning-btn:hover{
-    box-shadow: 5px 5px 5px var(--white2);
-    background: var(--red);
-}
+    button.warning-btn:hover{
+        box-shadow: 5px 5px 5px var(--white2);
+        background: var(--red);
+    }
 
-/* For close button */
-.close-button {
-    display: flex;
-    justify-content: flex-end;
-}
+    /* For close button */
+    .close-button {
+        display: flex;
+        justify-content: flex-end;
+    }
 
-.close-button span {
-    cursor: pointer;
+    .close-button span {
+        cursor: pointer;
 
-}
+    }
+/*End of Button */
+
+/* For error messages */
+    p.errMsg {
+        margin: 0;
+        width: 80%;
+        font-size: 14px;
+        color: var(--red);
+        background: var(--warning-light);
+        padding: 0.2rem 0.7rem;
+        border-radius: 5px;
+        margin-top: 0.4rem;
+    }
+
+    .password-guide {
+        margin: 0;
+        width: 80%;
+        font-size: 14px;
+        color: var(--red);
+        padding: 0;
+        margin-top: 0.4rem;
+    }
+
+    .password-guide li {
+        list-style-type: none;
+        margin-bottom: 0.3rem;
+    }
+/* End of error messages */
 
 /*****************************************************************************************
 *

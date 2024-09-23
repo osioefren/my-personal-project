@@ -23,15 +23,11 @@
     overflow: hidden;
 }
 
-#crud-popup div, #delete-popup div {
-    margin-bottom: 1rem;
-}
-
 #crud-popup h6, #delete-popup h6{
     margin: 0;
 }
 
-#crud-popup form div div, #delete-popup form div div {
+#delete-popup form div div {
    display: flex;
    justify-content: space-between;
 }
@@ -49,4 +45,24 @@
 
 #crud-popup .close-button span i:hover, #delete-popup .close-button span i:hover {
     color: var(--red);
+}
+
+/* For popup input */
+.password {
+    width: 80%;
+    border-bottom: 1px solid var(--gray1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.password input#password, .password input#repassword   {
+    border: none;
+}
+
+.password i {
+    cursor: pointer;
+}
+
+.repassword label {
+    width: 20%;
 }
